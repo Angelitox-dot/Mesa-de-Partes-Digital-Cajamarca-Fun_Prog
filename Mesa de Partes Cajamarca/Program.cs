@@ -8,13 +8,18 @@ namespace EP
 {
     internal class Program
     {
-        // Arreglos paralelos para almacenar los datos del trámite documentario (Tema 4.3)
+        private const string Arg0 = "Área      : {areas[indice]}";
+
+        // Arreglos paralelos para almacenar los datos del trámite documentario vistos en: Tema 4.3
         static string[] codigos = new string[100];
         static string[] documentos = new string[100];
         static string[] remitentes = new string[100];
         static string[] asuntos = new string[100];
         static string[] areas = new string[100];
         static int totalRegistros = 0;
+
+        public static string ASDS { get; private set; }
+        public static bool ASDSArg0 { get; private set; }
 
         static void Main(string[] args)
         {
@@ -89,7 +94,7 @@ namespace EP
                             Console.WriteLine($"Documento : {documentos[indice]}");
                             Console.WriteLine($"Remitente : {remitentes[indice]}");
                             Console.WriteLine($"Asunto    : {asuntos[indice]}");
-                            Console.WriteLine($"Área      : {areas[indice]}");
+                            Console.WriteLine(ASDSArg0);
                         }
                         else
                         {
@@ -108,7 +113,7 @@ namespace EP
                         break;
 
                     case 5:
-                        Console.WriteLine("\nSaliendo del programa. ¡Mucho éxito mañana!");
+                        Console.WriteLine("\nSaliendo del programa. ¡Vuelva pronto!");
                         break;
 
                     default:
@@ -125,7 +130,7 @@ namespace EP
             } while (opcion != 5);
         }
 
-        // Métodos de Validación de Cadenas (Tema 4.2)
+        // Métodos de Validación de Cadenas vistos en: Tema 4.2
         public static string ValidarCodigoExpediente(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -165,7 +170,7 @@ namespace EP
             return docLimpio;
         }
 
-        // Métodos de Gestión con Arreglos Paralelos y Burbuja (Temas 3.2, 4.3, 4.4)
+        // Métodos de Gestión con Arreglos Paralelos y Burbuja vistos en: Temas 3.2, 4.3, 4.4
         public static void Registrar(string cod, string doc, string rem, string asu, string are)
         {
             if (totalRegistros >= 100)
